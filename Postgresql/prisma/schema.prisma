@@ -1,0 +1,19 @@
+// Don't forget to run npx prisma migrate to create a migration folder and have your tables created
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Book {
+    id        String   @id @default(uuid())
+    title     String
+    author    String
+    pages     Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
